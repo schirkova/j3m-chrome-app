@@ -1,0 +1,97 @@
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  height: 100%;
+}
+
+@-webkit-keyframes switch-green {
+  from { background-color: white;} to {background-color: rgb(163, 255, 163);}
+}
+@-webkit-keyframes switch-red {
+  from { background-color: white;} to {background-color: rgb(255, 203, 203);}
+}
+.dragging {
+  -webkit-animation: switch-green 0.5s ease-in-out 0 infinite alternate;
+}
+
+.invalid-dragging {
+  -webkit-animation: switch-red 0.5s ease-in-out 0 infinite alternate;
+}
+
+ul {
+  list-style: none;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+button, input[type=submit] {
+	font-weight: normal;
+	color: #333333;
+	background-color: #eeeeee;
+	border: 1px solid #a0c2d3;
+  background-image: linear-gradient(top, #08C, #05C);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.done-true {
+  text-decoration: line-through;
+  color: grey;
+}
+
+      rect.bordered {
+        stroke: #E6E6E6;
+        stroke-width:2px;   
+      }
+
+      text.mono {
+        font-size: 9pt;
+        font-family: Consolas, courier;
+        fill: #aaa;
+      }
+
+      text.axis-workweek {
+        fill: #000;
+      }
+
+      text.axis-worktime {
+        fill: #000;
+      }
+
+/**** tab content styles   *****/
+div#chart {
+        height: 100%;
+        width: 100%;
+      }
+div#timeline {
+        height: 580px;
+        width: 100%;
+        border:1px solid #9FB6CD;
+        overflow: scroll;
+      }
+      
+
+
+/**** collapsible tree styles   *****/
+
+.node rect {
+  cursor: pointer;
+  fill: #fff;
+  fill-opacity: .5;
+  stroke: #3182bd;
+  stroke-width: 1.5px;
+}
+
+.node text {
+  font: 10px sans-serif;
+  pointer-events: none;
+}
+
+path.link {
+  fill: none;
+  stroke: #9ecae1;
+  stroke-width: 1.5px;
+}

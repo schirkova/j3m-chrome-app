@@ -1,0 +1,28 @@
+{
+  "name": "j3m app",
+  "description": "j3m packaged app.",
+  "version": "0.1",
+  "permissions": [
+  	"https://www.j3m.info/",
+    {"fileSystem": ["retainEntries", "directory", "write"]},
+    "storage",
+    "webview"
+  ],
+  "file_handlers": {
+    "text": {
+      "types": [
+          "text/*"
+      ],
+      "title": "Text editor"
+    }
+  },
+  "app": {
+    "background": {
+      "scripts": ["main.js"]
+    }
+  },
+  "sandbox": {
+    "pages": ["sandboxed.html"]
+  },
+  "icons": { "16": "img/ic_logo.png", "128": "img/ic_logo.png" }
+}
