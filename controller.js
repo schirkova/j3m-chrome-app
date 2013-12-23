@@ -112,19 +112,22 @@ function getFileName(url,type){
 $scope.saveCSV = function () {
 	if ($scope.j3m){
 		var fileName = $scope.j3m.asset_path.split("/")[1];
-		saveFile(toCSV($scope.j3m), fileName + ".csv");
+		var blob = new Blob([toCSV($scope.j3m)], {type: 'text/plain'});
+		saveFile(blob, fileName + ".csv");
 	}
 }
 $scope.saveTSV = function () {
 	if ($scope.j3m){
 		var fileName = $scope.j3m.asset_path.split("/")[1];
-		saveFile(toTSV($scope.j3m), fileName + ".tsv");
+		var blob = new Blob([toTSV($scope.j3m)], {type: 'text/plain'});
+		saveFile(blob, fileName + ".tsv");
 	}
 }
 $scope.saveHTML = function () {
 	if ($scope.j3m){
 		var fileName = $scope.j3m.asset_path.split("/")[1];
-		saveFile(toHTML($scope.j3m), fileName + ".htm");
+		var blob = new Blob([toHTML($scope.j3m)], {type: 'text/plain'});
+		saveFile(blob, fileName + ".htm");
 	}
 }
 
