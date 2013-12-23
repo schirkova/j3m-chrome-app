@@ -174,9 +174,6 @@ function color(d) {
 /* timeline code */    
 /*****************/
 var j3mTimeline = new Object();
-j3mTimeline.calendarData = new Array ();
-
-j3mTimeline.Ytracker =  new Array ();
 
  function addJ3M (j3m) {
     var _j3m = JSON.parse(j3m);
@@ -197,11 +194,19 @@ j3mTimeline.Ytracker =  new Array ();
 
 
 function initTimeline(){
+
+	j3mTimeline = new Object();
+	j3mTimeline.calendarData = new Array ();
+	
+	j3mTimeline.Ytracker =  new Array ();
 	var w = 1200;
  	var h = 300;
 
 console.log(j3mTimeline.calendarData);
  
+ 	d3.select("svg")
+       .remove();
+        
  	j3mTimeline.svg = d3.select("#timeline")
         .append("svg")
         .attr("width", w)
