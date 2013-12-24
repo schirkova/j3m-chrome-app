@@ -252,7 +252,6 @@ console.log(j3mTimeline.calendarData);
 function draw_events(){
   var events = j3mTimeline.svg.selectAll("image.item").data(j3mTimeline.calendarData, function(d) {return d.time; });
 
-
     events.enter()
             .append("image")
             	.attr("class", "item")
@@ -262,16 +261,21 @@ function draw_events(){
                  })
                 .attr("y", function(d){ 
                 	if (j3mTimeline.Ytracker.indexOf(d.pgpkey) == -1) {
-                		j3mTimeline.Ytracker.push(d.pgpkey);         		
+                		j3mTimeline.Ytracker.push(d.pgpkey);       	
+                		j3mTimeline.svg.append("text")
+						    .text(d.alias)
+						    .attr("x", "20")
+						    .attr("y", 10 + (40 * j3mTimeline.Ytracker.length))
+						    .attr("text-anchor","middle");	
                 	}
                 	console.log(j3mTimeline.Ytracker);
-                	return 40*j3mTimeline.Ytracker.indexOf(d.pgpkey); 
+                	return 40+40*j3mTimeline.Ytracker.indexOf(d.pgpkey); 
                  })
                 .attr("width", 20)
                 .attr("height", 20);
      
      events.append("title")
-      .text(function(d) { return d.alias ;});           
+      .text(function(d) { return convertTimestamp(d.time);});           
                 
 
     events.exit()
@@ -366,15 +370,18 @@ function convertTimestamp(timestampField) {
         return "N/A";
     }
     else {
-        var dt = new Date(timestampValue*1000);
+        var dt = new Date(timestampValue);
         console.log(dt.getFullYear() + '-' + pad(dt.getMonth()+1, 2) + '-' + pad(dt.getDate(), 2) + ' ' + pad(dt.getHours(), 2) + ':' + pad(dt.getMinutes(), 2) + ':' + pad(dt.getSeconds(), 2));
         console.log(dt.toLocaleString());
         console.log(dt.toUTCString());
-        //return dt.toLocaleString();
-        return dt.toUTCString();
+        return dt.toLocaleString();
     }
 }
-
+function pad(n, width, z) {
+  z = z || '0';
+  n = n + '';
+  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+}
 var keyword_container_elements = ["data", "userAppendedData" , "associatedForms" , "answerData"];
 var keywords_excluded_words = ["a", "the" , "is" , "are" , "am" , "was"];
 function extractKeywords(data, path, pathIndex, keyWords) {
